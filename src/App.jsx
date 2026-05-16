@@ -763,7 +763,7 @@ const Contact = () => {
             </div>
             {status === 'success' && (
               <div style={{ marginTop: '2rem', padding: '1rem', backgroundColor: '#f0fdf4', color: '#166534', borderLeft: '4px solid #22c55e', fontSize: '1.1rem' }}>
-                Thank you! Your message has been sent directly to Mehak's spreadsheet.
+                Your message has been delievered!
               </div>
             )}
           </div>
