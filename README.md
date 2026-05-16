@@ -1,16 +1,55 @@
-# React + Vite
+# Mehak Chawla | Editorial Makeup Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A high-end, editorial-focused portfolio website for **Mehak Chawla**, a professional makeup artist. This project emphasizes visual excellence, technical precision, and a seamless user experience through a modern "magazine-style" design.
 
-Currently, two official plugins are available:
+## ✨ Key Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Editorial Aesthetic**: A premium design system using curated typography (Aboreto), refined spacing, and a minimalist color palette.
+- **Dynamic Portfolio Sections**: Seven distinct categories (Bridal, Editorial, SFX, etc.) with a consistent 8-image preview and "Load More" functionality.
+- **High-Res "Macro" Lightbox**: An immersive, full-screen viewing experience with a modern glassy backdrop, allowing clients to appreciate technical details.
+- **Deep-Dive Collection Pages**: Dedicated pages for each look type, featuring extensive 24-image grids in a professional 3:4 aspect ratio.
+- **Real-time Google Sheets Integration**: A custom-built contact form that sends enquiries directly to a Google Spreadsheet in real-time using Google Apps Script.
+- **Fluid Navigation**: Responsive 4+3 navigation grid with global smooth-scrolling and auto-scroll-to-top on page transitions.
 
-## React Compiler
+## 🚀 Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Core**: React.js, Vite
+- **Routing**: React Router DOM
+- **Backend**: Google Apps Script (Serverless)
+- **Styling**: Vanilla CSS (Custom Design System)
+- **Deployment**: Optimized for Vercel/Netlify
 
-## Expanding the ESLint configuration
+## 🛠️ Local Setup
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/arpitsehal/Mehak_portfolio.git
+   cd Mehak_portfolio
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Run the development server**:
+   ```bash
+   npm run dev
+   ```
+
+4. **Build for production**:
+   ```bash
+   npm run build
+   ```
+
+## 📊 Google Sheets Integration Setup
+
+To connect the contact form to your own sheet:
+1. Create a Google Sheet with headers: `Timestamp`, `First Name`, `Last Name`, `Email`, `Mobile`, `Subject`, `Message`.
+2. Go to **Extensions > Apps Script** and paste the provided integration script.
+3. Deploy as a **Web App** with "Access: Anyone".
+4. Update the `scriptURL` in `App.jsx` with your new deployment URL.
+
+---
+
+*Designed and Developed for Mehak Chawla.*
