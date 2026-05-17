@@ -83,11 +83,11 @@ const Navbar = () => {
         )}
 
         {/* Desktop Menu */}
-        <div style={{
-          display: 'flex',
+        <div className="desktop-nav" style={{
           gap: isHome ? '0' : '3rem',
           width: isHome ? '100%' : 'auto',
-          justifyContent: isHome ? 'space-around' : 'flex-end'
+          justifyContent: isHome ? 'space-around' : 'flex-end',
+          alignItems: 'center'
         }}>
           <Link to="/" className="nav-link" style={isHome ? { fontSize: '1.1rem', letterSpacing: '0.2em', fontWeight: 300 } : {}}>HOME</Link>
           <div
@@ -126,6 +126,25 @@ const Navbar = () => {
           <Link to="/about" className="nav-link" style={isHome ? { fontSize: '1.1rem', letterSpacing: '0.2em', fontWeight: 300 } : {}}>ABOUT</Link>
           <Link to="/contact" className="nav-link" style={isHome ? { fontSize: '1.1rem', letterSpacing: '0.2em', fontWeight: 300 } : {}}>CONTACT</Link>
         </div>
+
+        {/* Mobile Hamburger Button */}
+        <button 
+          className={`hamburger ${isOpen ? 'open' : ''}`}
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      <div className={`mobile-menu-overlay ${isOpen ? 'open' : ''}`}>
+        <Link to="/" onClick={() => setIsOpen(false)} style={{ fontSize: '2rem', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Home</Link>
+        <Link to="/portfolio" onClick={() => setIsOpen(false)} style={{ fontSize: '2rem', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Portfolio</Link>
+        <Link to="/about" onClick={() => setIsOpen(false)} style={{ fontSize: '2rem', letterSpacing: '0.2em', textTransform: 'uppercase' }}>About</Link>
+        <Link to="/contact" onClick={() => setIsOpen(false)} style={{ fontSize: '2rem', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Contact</Link>
       </div>
       <style>{`
         .nav-link {
@@ -325,14 +344,7 @@ const Home = () => (
           fontWeight: 400
         }}>MEHAK CHAWLA</h2>
 
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1.2fr 0.8fr',
-          gap: '4rem',
-          alignItems: 'center',
-          maxWidth: '1200px',
-          margin: '0 auto'
-        }}>
+        <div className="grid-home">
           <div style={{ fontSize: '1.2rem', lineHeight: '1.8', color: '#333' }}>
             <p style={{ marginBottom: '2rem' }}>
               Hey, I’m Mehak Chawla a Delhi, India based cosmetologist specialising in makeup artistry. I’m thrilled to welcome you to my official website! In the portfolio section, you’ll find a curated collection of my work, featuring a variety of styles including bridal and engagement looks, special effects, creative concepts, fantasy themes, and glamorous makeup.
@@ -447,12 +459,7 @@ const PortfolioSection = ({ title, img, isLast, onImageClick }) => {
         fontFamily: "'Aboreto', cursive"
       }}>{title.toUpperCase()}</h2>
 
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(4, 1fr)',
-        gap: '1.5rem',
-        marginBottom: '4rem'
-      }}>
+      <div className="grid-portfolio">
         {photos.map((src, i) => (
           <div 
             key={i} 
@@ -622,12 +629,7 @@ const CategoryDetail = ({ onImageClick }) => {
           fontFamily: "'Aboreto', cursive"
         }}>{title}</h1>
 
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(4, 1fr)', 
-          gap: '1.5rem',
-          marginBottom: '0.5rem'
-        }}>
+        <div className="grid-portfolio" style={{ marginBottom: '0.5rem' }}>
           {photos.map((src, i) => (
             <div 
               key={i} 
@@ -663,7 +665,7 @@ const CategoryDetail = ({ onImageClick }) => {
 const About = () => (
   <div className="fade-in">
     <div className="container section-padding" style={{ paddingTop: '1.5rem', paddingBottom: '1rem' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6rem', alignItems: 'stretch' }}>
+      <div className="grid-about">
         <div>
           <h1 style={{
             marginBottom: '2.5rem',
@@ -752,7 +754,7 @@ const Contact = () => {
             display: 'inline-block'
           }}>Drop Your Message</h1>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', alignItems: 'flex-start' }}>
+        <div className="grid-contact">
           {/* Left Side: Text Content */}
           <div style={{ paddingTop: '2rem' }}>
             <p style={{ fontSize: '2rem', lineHeight: '1.4', color: '#333', marginBottom: '1.5rem', maxWidth: '500px', fontWeight: 300 }}>
@@ -771,7 +773,7 @@ const Contact = () => {
           {/* Right Side: Form */}
           <div>
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
-              <div style={{ display: 'flex', gap: '1.5rem' }}>
+              <div className="form-row">
                 <div style={{ flex: 1 }}>
                   <label style={{ fontSize: '0.8rem', letterSpacing: '0.2em', color: '#999', textTransform: 'uppercase' }}>First Name *</label>
                   <input name="firstName" value={formData.firstName} onChange={handleChange} type="text" style={{ width: '100%', padding: '0.5rem 0', border: 'none', borderBottom: '1px solid #ddd', outline: 'none', fontSize: '1.1rem' }} required />
@@ -782,7 +784,7 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div style={{ display: 'flex', gap: '1.5rem' }}>
+              <div className="form-row">
                 <div style={{ flex: 1 }}>
                   <label style={{ fontSize: '0.8rem', letterSpacing: '0.2em', color: '#999', textTransform: 'uppercase' }}>Email *</label>
                   <input name="email" value={formData.email} onChange={handleChange} type="email" style={{ width: '100%', padding: '0.5rem 0', border: 'none', borderBottom: '1px solid #ddd', outline: 'none', fontSize: '1.1rem' }} required />
