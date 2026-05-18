@@ -60,7 +60,8 @@ img {
 }
 
 .section-padding {
-  padding: 6rem 0;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
 }
 
 /* Animations */
@@ -251,7 +252,8 @@ body {
   }
 
   .section-padding {
-    padding: 4rem 0;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
   }
 
   .grid-home {
@@ -303,9 +305,13 @@ body {
   
   /* Adjust typography for mobile */
   h1, h2 {
-    font-size: 2rem !important;
-    letter-spacing: 0.15em !important;
+    font-size: 1.8rem !important;
+    letter-spacing: 0.05em !important;
     word-wrap: break-word;
+  }
+  
+  .about-image {
+    display: none !important;
   }
 
   .hero-text-wrapper {
@@ -313,8 +319,8 @@ body {
   }
 
   .hero-name {
-    font-size: clamp(1.6rem, 8vw, 2.5rem);
-    letter-spacing: 0.2em;
+    font-size: clamp(1.3rem, 7vw, 2.5rem);
+    letter-spacing: 0.15em;
   }
 
   .hero-title {

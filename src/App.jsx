@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link, useLocation, useParams } 
 
 // Assets
 import heroImg from './assets/hero.png';
+import mehakImg from './assets/mehak.JPG';
 import bridalImg from './assets/bridal.png';
 import editorialImg from './assets/editorial.png';
 import slide1 from './assets/slide1.png';
@@ -126,7 +127,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Hamburger Button */}
-        <button 
+        <button
           className={`hamburger ${isOpen ? 'open' : ''}`}
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
@@ -343,7 +344,14 @@ const Home = () => (
               overflow: 'hidden',
               boxShadow: '0 20px 50px rgba(0,0,0,0.1)'
             }}>
-              <img src={heroImg} alt="Mehak Chawla" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <img src={mehakImg} alt="Mehak Chawla" style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                objectPosition: '100% 0%',
+                transform: 'scale(1.15) translateX(-6%)',
+                transformOrigin: 'top'
+              }} />
             </div>
           </div>
         </div>
@@ -366,12 +374,12 @@ const Lightbox = ({ src, onClose }) => {
   if (!src) return null;
 
   return (
-    <div 
+    <div
       onClick={onClose}
       style={{
         position: 'fixed',
         top: 0, left: 0, right: 0, bottom: 0,
-        width: '100vw', 
+        width: '100vw',
         height: '100vh',
         backgroundColor: '#ffffff',
         zIndex: 10000,
@@ -390,19 +398,19 @@ const Lightbox = ({ src, onClose }) => {
         alignItems: 'center',
         padding: '2rem'
       }}>
-        <img 
-          src={src} 
-          alt="Macro view" 
-          style={{ 
-            maxWidth: '100%', 
-            maxHeight: '85vh', 
+        <img
+          src={src}
+          alt="Macro view"
+          style={{
+            maxWidth: '100%',
+            maxHeight: '85vh',
             objectFit: 'contain',
             boxShadow: '0 40px 100px rgba(0,0,0,0.15)',
             backgroundColor: 'transparent'
-          }} 
+          }}
         />
       </div>
-      <button 
+      <button
         onClick={(e) => { e.stopPropagation(); onClose(); }}
         style={{
           position: 'absolute',
@@ -424,7 +432,7 @@ const Lightbox = ({ src, onClose }) => {
 const PortfolioSection = ({ title, img, isLast, onImageClick }) => {
   const photos = Array(8).fill(img);
   const id = title.toLowerCase().replace(/\s+/g, '-');
-  
+
   return (
     <div id={id} style={{ marginBottom: isLast ? '4rem' : '10rem', scrollMarginTop: '100px' }}>
       <h2 style={{
@@ -439,11 +447,11 @@ const PortfolioSection = ({ title, img, isLast, onImageClick }) => {
 
       <div className="grid-portfolio">
         {photos.map((src, i) => (
-          <div 
-            key={i} 
+          <div
+            key={i}
             onClick={() => onImageClick(src)}
-            style={{ 
-              aspectRatio: '3/4', 
+            style={{
+              aspectRatio: '3/4',
               overflow: 'hidden',
               backgroundColor: '#f9f9f9',
               cursor: 'zoom-in'
@@ -609,11 +617,11 @@ const CategoryDetail = ({ onImageClick }) => {
 
         <div className="grid-portfolio" style={{ marginBottom: '0.5rem' }}>
           {photos.map((src, i) => (
-            <div 
-              key={i} 
+            <div
+              key={i}
               onClick={() => onImageClick(src)}
-              style={{ 
-                aspectRatio: '3/4', 
+              style={{
+                aspectRatio: '3/4',
                 overflow: 'hidden',
                 backgroundColor: '#f9f9f9',
                 cursor: 'zoom-in'
@@ -667,13 +675,14 @@ const About = () => (
           </p>
           <Link to="/contact" className="btn btn-filled">CONTACT US</Link>
         </div>
-        <div style={{
-          backgroundImage: `url(${heroImg})`,
+        <div className="about-image" style={{
+          backgroundImage: `url(${mehakImg})`,
           backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundPosition: '100% 5%',
           height: '100%',
           minHeight: '550px',
-          boxShadow: '-20px 20px 0px var(--bg-soft)'
+          marginLeft: '4rem',
+          boxShadow: '-10px 10px 0px var(--bg-soft)'
         }}></div>
       </div>
     </div>
@@ -699,9 +708,9 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('submitting');
-    
+
     const scriptURL = "https://script.google.com/macros/s/AKfycbwUPCh5smTCsoiC7iH0ftkwexEgufc2ijxrbEgzQ36MzMdeLZGm7ozfR_XGPb2CA-CY/exec";
-    
+
     try {
       await fetch(scriptURL, {
         method: 'POST',
@@ -709,7 +718,7 @@ const Contact = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
       });
-      
+
       setStatus('success');
       setFormData({ firstName: '', lastName: '', email: '', mobile: '', subject: '', message: '' });
       setTimeout(() => setStatus('idle'), 5000);
@@ -783,15 +792,15 @@ const Contact = () => {
                 <textarea name="message" value={formData.message} onChange={handleChange} rows="3" style={{ width: '100%', padding: '0.5rem 0', border: 'none', borderBottom: '1px solid #ddd', outline: 'none', resize: 'none', fontSize: '1.1rem' }} required></textarea>
               </div>
 
-              <button 
-                type="submit" 
-                className="btn btn-filled" 
+              <button
+                type="submit"
+                className="btn btn-filled"
                 disabled={status === 'submitting'}
                 style={{ width: '100%', marginTop: '0.5rem', opacity: status === 'submitting' ? 0.7 : 1 }}
               >
                 {status === 'submitting' ? 'SUBMITTING...' : 'SUBMIT'}
               </button>
-              
+
               {status === 'error' && <p style={{ color: 'red', fontSize: '0.9rem', marginTop: '0.5rem' }}>Something went wrong. Please try again.</p>}
             </form>
           </div>
