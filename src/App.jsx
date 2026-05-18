@@ -72,9 +72,7 @@ const Navbar = () => {
         maxWidth: isHome ? '100%' : '1400px'
       }}>
         {!isHome && (
-          <Link to="/" style={{
-            fontSize: '1.7rem',
-            letterSpacing: '0.4em',
+          <Link to="/" className="navbar-brand-link" style={{
             fontWeight: 400,
             color: '#000',
             whiteSpace: 'nowrap',
@@ -295,35 +293,14 @@ const Home = () => (
       }}></div>
 
       {/* Name and Title with precise vertical alignment */}
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingLeft: '3.5rem' }}>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr auto 1fr',
-          alignItems: 'baseline',
-          fontSize: 'clamp(2.5rem, 8vw, 4.5rem)',
-          letterSpacing: '0.4em',
-          fontFamily: "'Aboreto', cursive",
-          textTransform: 'uppercase',
-          fontWeight: 400,
-          width: '100%',
-          marginBottom: '-0.5rem'
-        }}>
+      <div className="hero-text-wrapper">
+        <div className="hero-name">
           <span style={{ textAlign: 'right' }}>MEHAK</span>
           <span style={{ width: '0.8em' }}>&nbsp;</span>
           <span style={{ textAlign: 'left' }}>CHAWLA</span>
         </div>
 
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr auto 1fr',
-          alignItems: 'baseline',
-          fontSize: 'clamp(0.9rem, 2.5vw, 1.4rem)',
-          letterSpacing: '0.5em',
-          textTransform: 'uppercase',
-          fontWeight: 400,
-          opacity: 0.9,
-          width: '100%'
-        }}>
+        <div className="hero-title">
           <span style={{ textAlign: 'right' }}>COSMETOLOGIST</span>
           <span style={{ width: '2.5rem', textAlign: 'center' }}>|</span>
           <span style={{ textAlign: 'left' }}>MAKE-UP ARTIST</span>
@@ -359,8 +336,9 @@ const Home = () => (
 
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             <div style={{
-              width: '400px',
-              height: '500px',
+              width: '100%',
+              maxWidth: '400px',
+              aspectRatio: '4 / 5',
               borderRadius: '50%',
               overflow: 'hidden',
               boxShadow: '0 20px 50px rgba(0,0,0,0.1)'
