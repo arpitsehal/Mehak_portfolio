@@ -251,6 +251,7 @@ const Home = () => (
   <div className="fade-in">
     <section style={{
       height: '100vh',
+      width: '100%',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
@@ -259,42 +260,37 @@ const Home = () => (
       position: 'relative',
       overflow: 'hidden',
       color: '#fff',
-      backgroundImage: `url(${heroImg})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
+      backgroundColor: '#000',
       marginBottom: '0.5rem'
     }}>
-      {/* 
       <video 
         autoPlay 
-        muted 
         loop 
         playsInline
         style={{
           position: 'absolute',
-          top: '50%',
-          left: '50%',
+          top: 0,
+          left: 0,
           width: '100%',
           height: '100%',
           objectFit: 'cover',
-          transform: 'translate(-50%, -50%)',
-          zIndex: -2
+          transform: 'scale(1.25)', /* Scales up the video to hide baked-in black bars */
+          zIndex: 0
         }}
       >
-        <source src="https://video.wixstatic.com/video/11062b_9f35737083464506944a95610818206d/1080p/mp4/file.mp4" type="video/mp4" />
-      </video> 
-      */}
+        <source src="/mehakclips.mp4" type="video/mp4" />
+      </video>
       {/* Overlay */}
       <div style={{
         position: 'absolute',
         top: 0, left: 0,
         width: '100%', height: '100%',
         background: 'rgba(0,0,0,0.4)',
-        zIndex: -1
+        zIndex: 1
       }}></div>
 
       {/* Name and Title with precise vertical alignment */}
-      <div className="hero-text-wrapper">
+      <div className="hero-text-wrapper" style={{ position: 'relative', zIndex: 2 }}>
         <div className="hero-name">
           <span style={{ textAlign: 'right' }}>MEHAK</span>
           <span style={{ width: '0.8em' }}>&nbsp;</span>
