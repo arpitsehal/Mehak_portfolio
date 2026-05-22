@@ -247,7 +247,10 @@ const Footer = () => {
 };
 
 // Pages
-const Home = () => (
+const Home = () => {
+  const [isMuted, setIsMuted] = useState(true);
+
+  return (
   <div className="fade-in">
     <section style={{
       height: '100vh',
@@ -266,6 +269,7 @@ const Home = () => (
       <video 
         autoPlay 
         loop 
+        muted={isMuted}
         playsInline
         style={{
           position: 'absolute',
@@ -288,6 +292,30 @@ const Home = () => (
         background: 'rgba(0,0,0,0.4)',
         zIndex: 1
       }}></div>
+
+      {/* Mute/Unmute Toggle */}
+      <button 
+        onClick={() => setIsMuted(!isMuted)}
+        style={{
+          position: 'absolute',
+          bottom: '40px',
+          right: '40px',
+          zIndex: 10,
+          background: 'rgba(0,0,0,0.5)',
+          border: '1px solid #fff',
+          color: '#fff',
+          padding: '12px 24px',
+          cursor: 'pointer',
+          letterSpacing: '0.15em',
+          fontSize: '0.9rem',
+          backdropFilter: 'blur(4px)',
+          transition: 'all 0.3s ease'
+        }}
+        onMouseEnter={(e) => { e.currentTarget.style.background = '#fff'; e.currentTarget.style.color = '#000'; }}
+        onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(0,0,0,0.5)'; e.currentTarget.style.color = '#fff'; }}
+      >
+        {isMuted ? 'UNMUTE SOUND' : 'MUTE SOUND'}
+      </button>
 
       {/* Name and Title with precise vertical alignment */}
       <div className="hero-text-wrapper" style={{ position: 'relative', zIndex: 2 }}>
@@ -354,7 +382,8 @@ const Home = () => (
       </div>
     </section>
   </div>
-);
+  );
+};
 
 const CATEGORIES = [
   { title: "Editorial Looks", img: editorialImg },
